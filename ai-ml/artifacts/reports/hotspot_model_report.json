@@ -1,0 +1,42 @@
+{
+  "model_type": "hotspot_regressor",
+  "best_model": "GradientBoostingRegressor",
+  "feature_names": [
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend",
+    "is_rush_hour",
+    "time_period",
+    "weather_code",
+    "road_type_code",
+    "visibility_code",
+    "traffic_density_code",
+    "traffic_signal",
+    "lanes",
+    "temperature",
+    "vehicles_involved",
+    "casualties",
+    "is_peak_hour",
+    "festival_code",
+    "cause_code",
+    "latitude",
+    "longitude"
+  ],
+  "cv_results": {
+    "RandomForestRegressor": {
+      "cv_rmse_mean": 0.06376279374350377,
+      "cv_rmse_std": 0.001055622351141791,
+      "train_time_s": 7.18337607383728
+    },
+    "GradientBoostingRegressor": {
+      "cv_rmse_mean": 0.06153483730110547,
+      "cv_rmse_std": 0.0011924342872356316,
+      "train_time_s": 6.1636292934417725
+    }
+  },
+  "test_metrics": {
+    "rmse": 0.06027497089892735,
+    "mae": 0.03818120009232868
+  }
+}

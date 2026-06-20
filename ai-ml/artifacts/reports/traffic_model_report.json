@@ -1,0 +1,28 @@
+{
+  "model_type": "traffic_regressor",
+  "best_model": "RandomForestRegressor",
+  "feature_names": [
+    "hour",
+    "day_of_week",
+    "is_weekend",
+    "is_rush_hour",
+    "road_type_code",
+    "monthly_avg_congestion"
+  ],
+  "cv_results": {
+    "RandomForestRegressor": {
+      "cv_rmse_mean": 2.8236459933354423,
+      "cv_rmse_std": 0.045605512876060045,
+      "train_time_s": 0.5515191555023193
+    },
+    "GradientBoostingRegressor": {
+      "cv_rmse_mean": 2.9860200047143155,
+      "cv_rmse_std": 0.07497422756565655,
+      "train_time_s": 0.44956278800964355
+    }
+  },
+  "test_metrics": {
+    "rmse": 2.7577693077671395,
+    "mae": 2.117671078447864
+  }
+}

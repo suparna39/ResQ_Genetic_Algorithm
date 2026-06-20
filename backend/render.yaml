@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: resq-backend
+    runtime: node
+    region: singapore            # closest to India; match the AI-ML service region
+    plan: starter                # free tier — upgrade to standard for production
+    # --include=dev forces TypeScript + @types to install so `tsc` can build,
+    # even when Render sets NODE_ENV=production.
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm run start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22.20.0"
+      - key: NODE_ENV
+        value: production
+      # Supabase pooler uses a self-signed cert — the app also sets this at runtime.
+      - key: NODE_TLS_REJECT_UNAUTHORIZED
+        value: "0"
+      # ── Secrets — set these in the Render dashboard, NOT here ──
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: BETTER_AUTH_SECRET
+        sync: false
+      # ── URLs — set after the services exist (see notes) ──
+      - key: BETTER_AUTH_URL
+        sync: false
+      - key: AI_ML_SERVICE_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false

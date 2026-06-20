@@ -1,0 +1,48 @@
+{
+  "model_type": "priority_classifier",
+  "best_model": "GradientBoosting",
+  "feature_names": [
+    "hour",
+    "day_of_week",
+    "month",
+    "is_weekend",
+    "is_rush_hour",
+    "time_period",
+    "weather_code",
+    "road_type_code",
+    "road_condition_code",
+    "lighting_code",
+    "traffic_control_code",
+    "vehicle_type_code",
+    "location_type_code",
+    "num_vehicles",
+    "num_casualties",
+    "num_fatalities",
+    "speed_limit",
+    "driver_age",
+    "driver_gender_code",
+    "license_status_code",
+    "alcohol_involvement_code",
+    "state_code",
+    "city_code"
+  ],
+  "cv_results": {
+    "RandomForest": {
+      "cv_f1_macro_mean": 0.32295115658066387,
+      "cv_f1_macro_std": 0.014527656334789576,
+      "train_time_s": 3.7277698516845703
+    },
+    "GradientBoosting": {
+      "cv_f1_macro_mean": 0.3266885483900105,
+      "cv_f1_macro_std": 0.017601542091700725,
+      "train_time_s": 5.450267791748047
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.3,
+    "f1_macro": 0.2995261299732079,
+    "precision_macro": 0.30017388602212164,
+    "recall_macro": 0.299592560730121
+  },
+  "classification_report": "              precision    recall  f1-score   support\n\n           0       0.31      0.28      0.29       197\n           1       0.29      0.30      0.29       196\n           2       0.30      0.32      0.31       207\n\n    accuracy                           0.30       600\n   macro avg       0.30      0.30      0.30       600\nweighted avg       0.30      0.30      0.30       600\n"
+}

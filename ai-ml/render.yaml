@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: resq-ai-ml
+    runtime: python
+    region: singapore          # closest to India; match the backend region
+    plan: starter              # free tier — upgrade to standard for prod
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    # Render injects $PORT — the app must bind to it. 1 worker keeps RAM low on
+    # the free tier (each worker reloads the model artifacts into memory).
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      # Allowed browser origins. The AI-ML service is normally called server-to
+      # -server by the backend (no Origin header), so "*" is safe here. Tighten
+      # to your Vercel domain if you ever call it directly from the browser.
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: GA_POPULATION_SIZE
+        value: "50"
+      - key: GA_MAX_GENERATIONS
+        value: "100"
+      - key: RANDOM_SEED
+        value: "42"

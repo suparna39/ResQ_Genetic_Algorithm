@@ -1,0 +1,45 @@
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+env/
+.venv/
+
+# ── Secrets / env files ───────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── NOTE: artifacts/ IS committed intentionally ──────────────────────────────
+# Trained models (~10 MB) must be in the repo so Render can serve them
+# without re-running training on every deploy.
+# To regenerate: python train.py
+
+# ── Raw probe GeoJSON (huge, optional) ───────────────────────────────────────
+datasets/new_delhi_traffic_dataset/probe_counts/geojson/
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Test artefacts ────────────────────────────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/

@@ -1,0 +1,24 @@
+# ===========================================================================
+#  AI Ambulance Allocation Service — Python dependencies
+#
+#  Versions are PINNED so the committed model artifacts in artifacts/ unpickle
+#  correctly on Render. The models were trained with scikit-learn 1.8.0 /
+#  numpy 2.x — a mismatched version here will break joblib.load().
+#
+#  xgboost is intentionally NOT included: all three saved models are pure
+#  scikit-learn (GradientBoosting / RandomForest), so inference never needs it.
+#  (It is only used during local training in model_trainer.py, imported lazily.)
+# ===========================================================================
+
+# ── Core server ────────────────────────────────────────────────────────────
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+python-multipart==0.0.27
+
+# ── ML stack (pinned to match the trained artifacts) ───────────────────────
+scikit-learn==1.8.0
+numpy==2.2.1
+pandas==2.2.3
+scipy==1.15.0
+joblib==1.4.2
